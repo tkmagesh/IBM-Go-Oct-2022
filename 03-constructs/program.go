@@ -129,6 +129,50 @@ func main() {
 		fallthrough
 	case "free":
 		fmt.Println("All free features")
-
 	}
+
+	/* for */
+	fmt.Printf("\nfor\n")
+	fmt.Println("for (v1.0)")
+	for i := 0; i < 10; i++ {
+		fmt.Println(i)
+	}
+
+	fmt.Println("for [while] (v2.0)")
+	/*
+		sum := 1
+		for sum < 100 {
+			sum += sum
+		}
+		fmt.Printf("sum = %d\n", sum)
+	*/
+
+	for sum := 1; sum < 100; {
+		sum += sum
+		fmt.Printf("sum = %d\n", sum)
+	}
+
+	fmt.Println("for [infinite] (v3.0)")
+	numSum := 1
+	for {
+		numSum += numSum
+		if numSum > 100 {
+			break
+		}
+	}
+	fmt.Printf("numSum = %d\n", numSum)
+
+	fmt.Println("Labels")
+
+OUTER_LOOP:
+	for i := 1; i <= 10; i++ {
+		for j := 1; j <= 10; j++ {
+			fmt.Printf("i = %d, j = %d\n", i, j)
+			if i == j {
+				fmt.Println("=================")
+				continue OUTER_LOOP
+			}
+		}
+	}
+
 }
