@@ -1,5 +1,6 @@
 /*
-	refactor this to be made of smaller functions with each function having only one responsibility
+	refactor this to be made of smaller functions with each
+	function having only one responsibility
 */
 
 package main
