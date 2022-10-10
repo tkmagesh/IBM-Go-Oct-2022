@@ -99,3 +99,7 @@ Data Types
 
     byte (alias for uint8)
     rune (alias for int32) (unicode code point)
+
+
+Functions
+    - anonymous functions
