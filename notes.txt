@@ -1,0 +1,77 @@
+Magesh Kuppan
+
+Schedule:
+    Commence    : 9:30 AM
+    Tea Break   : 11:00 AM (20 mins)
+    Lunch Break : 1:00 PM (1 hr)
+    Tea Break   : 3:30 PM (20 mins)
+    Wind up     : 5:30 PM
+
+Methodology:
+    No powerpoints
+    100% hands on driven class
+    At least 50% of the participants are expected to complete the assignment before we move on
+
+Code Repository
+    https://github.com/tkmagesh/ibm-go-oct-2022
+
+About You:
+    Name
+    Primary Skillset
+    Experience in Golang (if any)
+
+Why Golang? 
+    1. Distributed Systems 
+    2. Scalable
+    3. Better Performance
+    4. Suitable for Cloud Native Applications
+
+Paradox of choice
+    - Barry Schwartz
+
+    1. Simplicity
+        25 keywords
+        - No access modifiers   
+        - No classes (only structs)
+        - No inheritance (only composition)
+        - No exceptions (only errors)
+        - No "try catch finally"
+        - No reference types (everything is a value)
+        - No pointer arithmatic
+        - No implicit type conversion
+
+    2. Close to Hardware
+        - Compiled to machine code
+        - Different builds for different OS
+
+    3. Concurrency
+        - No of OS threads < No of concurrent operations
+        - Built for concurrency
+        - Language features for concurrency
+            go, range, select case, chan (data type), <- (channel operator)
+
+Software Requirements
+    Go tools - https://go.dev/dl/
+    Visual Studio Code - https://code.visualstudio.com/download
+
+To run a go program
+    go run <program.go>
+
+To create a build
+    go build <program.go>
+
+To create a build in a different name
+    go build -o <build_name> <program.go>
+    
+To list the go environment variables
+    go env
+
+To set the environment variables
+    go env -w <var1=value> <var2=value>
+
+To list all the dist platforms
+    go tool dist list
+
+To cross compile a program
+    GOOS=<target_OS> GOARCH=<target_Arch> go build <program.go>
+
