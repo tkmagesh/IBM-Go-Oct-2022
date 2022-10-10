@@ -99,4 +99,88 @@ func main() {
 	x, y, str := 100, 200, "Sum of x and y is :"
 	result := x + y
 	fmt.Println(str, result)
+
+	//using complex numbers
+	c1 := 4 + 5i
+	c2 := 3 + 4i
+
+	fmt.Println(c1 + c2)
+	fmt.Println(real(c1))
+	fmt.Println(imag(c1))
+
+	//type conversion
+	var i int = 100
+	var f float32
+	f = float32(i)
+	fmt.Println(f)
+
+	//constants
+	//const pi = 3.14
+
+	const (
+		PI float32 = 31.4
+		NO int     = 100
+	)
+	fmt.Println(PI, NO)
+
+	//iota
+	/*
+		const (
+			RED   = 0
+			GREEN = 1
+			BLUE  = 2
+		)
+	*/
+
+	/*
+		const (
+			RED   = iota
+			GREEN = iota
+			BLUE  = iota
+		)
+	*/
+
+	/*
+		const (
+			RED = iota
+			GREEN
+			BLUE
+		)
+	*/
+	/*
+		const (
+			RED = iota
+			GREEN
+			_
+			BLUE
+		)
+	*/
+
+	/*
+		const (
+			RED   = iota + 2 //0 + 2
+			GREEN            //1 + 2
+			BLUE             //2 + 2
+		)
+	*/
+
+	const (
+		RED = iota * 2
+		GREEN
+		BLUE
+	)
+
+	fmt.Printf("RED = %d, GREEN = %d, BLUE = %d\n", RED, GREEN, BLUE)
+
+	const (
+		VERBOSE = 1 << iota
+		CONFIG_FROM_DISK
+		DATABASE_REQUIRED
+		LOGGER_ACTIVATED
+		DEBUG
+		FLOAT_SUPPORT
+		RECOVERY_MODE
+		REBOOT_ON_FAILURE
+	)
+	fmt.Printf("%b, %b, %b, %b, %b, %b, %b, %b\n", VERBOSE, CONFIG_FROM_DISK, DATABASE_REQUIRED, LOGGER_ACTIVATED, DEBUG, FLOAT_SUPPORT, RECOVERY_MODE, REBOOT_ON_FAILURE)
 }
