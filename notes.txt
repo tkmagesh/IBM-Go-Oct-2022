@@ -143,4 +143,16 @@ Modularity
     To create a build
         go build .
 
-        
+    To install 3rd party package
+        go get <package_name>
+        ex : go get github.com/fatih/color
+        by default downloaded in the GOPATH/pkg/mod/...
+
+    To sync the go.mod file with the package usages in the app
+        go mod tidy
+
+    To localize the dependencies
+        go mod vendor
+
+    go mod graph
+    go mod why github.com/mattn/go-isatty

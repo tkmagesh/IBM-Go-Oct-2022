@@ -5,10 +5,12 @@ import (
 	/* "modularity-demo/calculator" */
 	calc "modularity-demo/calculator"
 	"modularity-demo/calculator/utils"
+
+	"github.com/fatih/color"
 )
 
 func main() {
-	fmt.Println("module executed")
+	color.Red("module executed")
 	/*
 		fmt.Println(calculator.Add(100, 200))
 		fmt.Println(calculator.Subtract(100, 200))
