@@ -121,4 +121,26 @@ Collections
     Map
         - collection of key/value pairs
 
+Modularity
+    Modules & Packages
+
+    Module
+        Unit of versioning
+        go.mod file
+            module name
+                github.com/tkmagesh/my-app (advisable)
+            go min version
+            3rd dependencies information
+
+        Can be made of more than one package
+
+    To create a module
+        go mod init <module_name>
+
+    To execute a module
+        go run .
+
+    To create a build
+        go build .
+
         
