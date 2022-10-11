@@ -2,7 +2,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
 	/*
@@ -29,12 +32,22 @@ func main() {
 
 	logOperation(100, 200, add)
 	logOperation(100, 200, subtract)
+
+	profileOperation(100, 200, add)
+	profileOperation(100, 200, subtract)
 }
 
 func logOperation(x, y int, op func(int, int)) {
 	fmt.Println("op commenced")
 	op(x, y)
 	fmt.Println("op completed")
+}
+
+func profileOperation(x, y int, op func(int, int)) {
+	start := time.Now()
+	op(x, y)
+	elapsed := time.Now().Sub(start)
+	fmt.Printf("Time taken : %v\n", elapsed)
 }
 
 func logAdd(x, y int) {
