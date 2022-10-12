@@ -161,3 +161,20 @@ Interface:
     Interfaces are implicitly implemented
     
     If a type has the method implementations of an interface, then the type is considered to be "implicitly" implemnting the interface
+
+
+Good code?
+    Readable
+    Performance
+
+    Add new features / modfiy existing features WITHOUT changing a lot of existing code
+
+    Reusable
+    OCP - Open Closed Principle
+        Open for extension but Closed for modification
+            extensions should be possible ONLY by adding new code (and NOT by changing the existing code)
+
+Maintainable?
+    Easy to change
+
+Maintainability X Performance
