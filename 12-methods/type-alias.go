@@ -20,15 +20,15 @@ func (e Employee) WhoAmI() {
 
 //type aliasing
 /*
-type Associate Employee
+type Developer Employee
 
-func (a Associate) WhoAmI() {
+func (a Developer) WhoAmI() {
 	Employee(a).WhoAmI()
 }
 */
 
 //composition
-type Associate struct {
+type Developer struct {
 	Employee
 }
 
@@ -40,10 +40,10 @@ func main() {
 
 	//type alias
 	/*
-		emp := Associate{Id: 100, Name: "John"}
+		emp := Developer{Id: 100, Name: "John"}
 		emp.WhoAmI()
 	*/
 
-	emp := Associate{Employee: Employee{Id: 100, Name: "John"}}
+	emp := Developer{Employee: Employee{Id: 100, Name: "John"}}
 	emp.WhoAmI()
 }
