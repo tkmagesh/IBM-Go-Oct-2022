@@ -35,30 +35,26 @@ func NewPerishableProduct(id int, name string, cost float32, units int, category
 
 func main() {
 	pen := Product{100, "Pen", 10, 20, "Stationary"}
-	fmt.Println(FormatProduct(pen))
+	fmt.Println(pen.Format())
 	fmt.Println("After applying 10% discount")
-	ApplyDiscount(&pen, 10)
-	fmt.Println(FormatProduct(pen))
+	pen.ApplyDiscount(10)
+	fmt.Println(pen.Format())
 
 	grapes := NewPerishableProduct(102, "Grapes", 20, 10, "Fruits", "2 Days")
-	fmt.Println(FormatPerishableProduct(*grapes))
+	fmt.Println(grapes.Format())
 	fmt.Println("After applying 10% discount")
-	ApplyDiscountPP(grapes, 10)
-	fmt.Println(FormatPerishableProduct(*grapes))
+	grapes.ApplyDiscount(10)
+	fmt.Println(grapes.Format())
 }
 
-func FormatProduct(p Product) string {
+func (p Product) Format() string {
 	return fmt.Sprintf("Id=%d, Name=%q, Cost=%v, Units=%d, Category=%q", p.Id, p.Name, p.Cost, p.Units, p.Category)
 }
 
-func ApplyDiscount(p *Product, discountPercentage float32) {
+func (p *Product) ApplyDiscount(discountPercentage float32) {
 	p.Cost = p.Cost * ((100 - discountPercentage) / 100)
 }
 
-func FormatPerishableProduct(pp PerishableProduct) string {
-	return fmt.Sprintf("Id=%d, Name=%q, Cost=%v, Units=%d, Category=%q, Expiry=%q", pp.Id, pp.Name, pp.Cost, pp.Units, pp.Category, pp.Expiry)
-}
-
-func ApplyDiscountPP(pp *PerishableProduct, discountPercentage float32) {
-	pp.Cost = pp.Cost * ((100 - discountPercentage) / 100)
+func (pp PerishableProduct) Format() string {
+	return fmt.Sprintf("%s, Expiry=%q", pp.Product.Format(), pp.Expiry)
 }
