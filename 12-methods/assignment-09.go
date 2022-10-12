@@ -105,6 +105,25 @@ func (products Products) Filter(predicate func(Product) bool) Products {
 	}
 	return result
 }
+
+func (products Products) Any(predicate func(Product) bool) bool {
+	for _, product := range products {
+		if predicate(product) {
+			return true
+		}
+	}
+	return false
+}
+
+func (products Products) All(predicate func(Product) bool) bool {
+	for _, product := range products {
+		if !predicate(product) {
+			return false
+		}
+	}
+	return true
+}
+
 func main() {
 	products := Products{
 		Product{105, "Pen", 5, 50, "Stationary"},
