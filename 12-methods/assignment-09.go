@@ -48,8 +48,65 @@ func (p Product) Format() string {
 
 */
 
+type Products []Product
+
+func (products Products) Print() {
+	for _, p := range products {
+		fmt.Println(p.Format())
+	}
+}
+
+func (products Products) IndexOf(p Product) int {
+	for idx, product := range products {
+		if product == p {
+			return idx
+		}
+	}
+	return -1
+}
+
+func (products Products) Includes(p Product) bool {
+	for _, product := range products {
+		if product == p {
+			return true
+		}
+	}
+	return false
+}
+
+/*
+func (products Products) FilterCostlyProducts() Products {
+	result := Products{}
+	for _, product := range products {
+		if product.Cost > 1000 {
+			result = append(result, product)
+		}
+	}
+	return result
+}
+
+func (products Products) FilterStationaryProducts() Products {
+	result := Products{}
+	for _, product := range products {
+		if product.Category == "Stationary" {
+			result = append(result, product)
+		}
+	}
+	return result
+}
+*/
+
+func (products Products) Filter(predicate func(Product) bool) Products {
+	result := Products{}
+	for _, product := range products {
+		if predicate(product) {
+			result = append(result, product)
+		}
+	}
+	return result
+}
 func main() {
-	products := []Product{
+	products := Products{
 		Product{105, "Pen", 5, 50, "Stationary"},
 		Product{107, "Pencil", 2, 100, "Stationary"},
 		Product{103, "Marker", 50, 20, "Utencil"},
@@ -58,4 +115,34 @@ func main() {
 		Product{104, "Scribble Pad", 20, 20, "Stationary"},
 		Product{109, "Golden Pen", 2000, 20, "Stationary"},
 	}
+	fmt.Println("Initial List")
+	products.Print()
+
+	kettle := Product{101, "Kettle", 2500, 10, "Utencil"}
+	fmt.Println("Index of kettle = ", products.IndexOf(kettle))
+
+	fmt.Println("Filter")
+	fmt.Println("Costly Products")
+	//costlyProducts := products.FilterCostlyProducts()
+	costlyProductPredicate := func(p Product) bool {
+		return p.Cost > 1000
+	}
+	costlyProducts := products.Filter(costlyProductPredicate)
+	costlyProducts.Print()
+
+	fmt.Println("Stationary Products")
+	stationaryProductsPredicate := func(p Product) bool {
+		return p.Category == "Stationary"
+	}
+	//stationaryProducts := products.FilterStationaryProducts()
+	stationaryProducts := products.Filter(stationaryProductsPredicate)
+	stationaryProducts.Print()
+
+	fmt.Println("Costly Stationary Products")
+	costlyStationaryProductPredicate := func(p Product) bool {
+		return costlyProductPredicate(p) && stationaryProductsPredicate(p)
+	}
+	costlyStationaryProducts := products.Filter(costlyStationaryProductPredicate)
+	costlyStationaryProducts.Print()
+
 }
