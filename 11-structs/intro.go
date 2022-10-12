@@ -28,5 +28,4 @@ func main() {
 	empPtr := &Employee{Id: 100, Name: "Magesh", City: "Bangalore"}
 	fmt.Println((*empPtr).Id, (*empPtr).Name, (*empPtr).City)
 	fmt.Println(empPtr.Id, empPtr.Name, empPtr.City)
-
 }
