@@ -6,7 +6,7 @@ import (
 )
 
 //last month (sprint-1)
-type Circle struct { //implments ShapeWithArea
+type Circle struct { //implments ShapeWithArea, ShapeWithPerimeter, Shape
 	Radius float32
 }
 
@@ -51,6 +51,7 @@ func PrintPerimeter(x ShapeWithPerimeter) {
 }
 
 //sprint-4
+//interface composition
 type Shape interface {
 	ShapeWithArea
 	ShapeWithPerimeter
