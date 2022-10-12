@@ -156,3 +156,8 @@ Modularity
 
     go mod graph
     go mod why github.com/mattn/go-isatty
+
+Interface:
+    Interfaces are implicitly implemented
+    
+    If a type has the method implementations of an interface, then the type is considered to be "implicitly" implemnting the interface

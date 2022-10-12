@@ -96,6 +96,7 @@ func (products Products) FilterStationaryProducts() Products {
 }
 */
 
+//2 days ago
 func (products Products) Filter(predicate func(Product) bool) Products {
 	result := Products{}
 	for _, product := range products {
@@ -163,5 +164,12 @@ func main() {
 	}
 	costlyStationaryProducts := products.Filter(costlyStationaryProductPredicate)
 	costlyStationaryProducts.Print()
+
+	//today
+	utencilProductsPredicate := func(p Product) bool {
+		return p.Category == "Utencil"
+	}
+	utencilProducts := products.Filter(utencilProductsPredicate)
+	utencilProducts.Print()
 
 }
