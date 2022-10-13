@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 type Product struct {
 	Id       int
@@ -145,6 +148,82 @@ func (products Products) All(predicate func(Product) bool) bool {
 	return true
 }
 
+//sort.Interface interface implementation
+func (products Products) Len() int {
+	return len(products)
+}
+
+//compare the products by Id
+func (products Products) Less(i, j int) bool {
+	return products[i].Id < products[j].Id
+}
+
+func (products Products) Swap(i, j int) {
+	products[i], products[j] = products[j], products[i]
+}
+
+//to sort by Name (using the type alias)
+type SortByName Products
+
+func (products SortByName) Len() int {
+	return len(products)
+}
+
+//compare the products by Name
+func (products SortByName) Less(i, j int) bool {
+	return products[i].Name < products[j].Name
+}
+
+func (products SortByName) Swap(i, j int) {
+	products[i], products[j] = products[j], products[i]
+}
+
+//to sort by Cost (using composition)
+type SortByCost struct {
+	Products
+}
+
+//overriding the Less() implementation to compare the products by Cost
+func (byCost SortByCost) Less(i, j int) bool {
+	return byCost.Products[i].Cost < byCost.Products[j].Cost
+}
+
+//to sort by Units (using composition)
+type SortByUnits struct {
+	Products
+}
+
+//overriding the Less() implementation to compare the products by Units
+func (byUnits SortByUnits) Less(i, j int) bool {
+	return byUnits.Products[i].Units < byUnits.Products[j].Units
+}
+
+//to sort by Cost (using composition)
+type SortByCategory struct {
+	Products
+}
+
+//overriding the Less() implementation to compare the products by Category
+func (byCategory SortByCategory) Less(i, j int) bool {
+	return byCategory.Products[i].Category < byCategory.Products[j].Category
+}
+
+//utility method for Products
+func (products Products) Sort(attrName string) {
+	switch attrName {
+	case "Id":
+		sort.Sort(products)
+	case "Name":
+		sort.Sort(SortByName(products))
+	case "Cost":
+		sort.Sort(SortByCost{Products: products})
+	case "Units":
+		sort.Sort(SortByUnits{Products: products})
+	case "Category":
+		sort.Sort(SortByCategory{Products: products})
+	}
+}
+
 func main() {
 	products := Products{
 		Product{105, "Pen", 5, 50, "Stationary"},
@@ -192,4 +271,29 @@ func main() {
 	utencilProducts := products.Filter(utencilProductsPredicate)
 	utencilProducts.Print()
 
+	fmt.Printf("\nSorting\n")
+	fmt.Println("Default sort [by Id]")
+	//sort.Sort(products)
+	products.Sort("Id")
+	products.Print()
+
+	fmt.Println("Sorting by Name")
+	//sort.Sort(SortByName(products))
+	products.Sort("Name")
+	products.Print()
+
+	fmt.Println("Sorting by Cost")
+	//sort.Sort(SortByCost{Products: products})
+	products.Sort("Cost")
+	products.Print()
+
+	fmt.Println("Sorting by Units")
+	// sort.Sort(SortByUnits{Products: products})
+	products.Sort("Units")
+	products.Print()
+
+	fmt.Println("Sorting by Category")
+	// sort.Sort(SortByCategory{Products: products})
+	products.Sort("Category")
+	products.Print()
 }
