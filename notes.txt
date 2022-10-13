@@ -215,8 +215,5 @@ Concurrency?
             a SEND operation can succeed ONLY if a RECEIVE operation is already initiated (ONLY in a non buffered channel)
                 OR a SEND operation is blocked until a RECEIVE operation is initiated
 
-
-fn(){
-    ch <- 100
-    fmt.Println("....")
-}
+Testing
+    go test ./...
