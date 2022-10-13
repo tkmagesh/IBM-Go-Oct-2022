@@ -224,6 +224,31 @@ func (products Products) Sort(attrName string) {
 	}
 }
 
+func (products Products) SortSlice(attrName string) {
+	switch attrName {
+	case "Id":
+		sort.Slice(products, func(i, j int) bool {
+			return products[i].Id < products[j].Id
+		})
+	case "Name":
+		sort.Slice(products, func(i, j int) bool {
+			return products[i].Name < products[j].Name
+		})
+	case "Cost":
+		sort.Slice(products, func(i, j int) bool {
+			return products[i].Cost < products[j].Cost
+		})
+	case "Units":
+		sort.Slice(products, func(i, j int) bool {
+			return products[i].Units < products[j].Units
+		})
+	case "Category":
+		sort.Slice(products, func(i, j int) bool {
+			return products[i].Category < products[j].Category
+		})
+	}
+}
+
 func main() {
 	products := Products{
 		Product{105, "Pen", 5, 50, "Stationary"},
@@ -274,26 +299,31 @@ func main() {
 	fmt.Printf("\nSorting\n")
 	fmt.Println("Default sort [by Id]")
 	//sort.Sort(products)
-	products.Sort("Id")
+	// products.Sort("Id")
+	products.SortSlice("Id")
 	products.Print()
 
 	fmt.Println("Sorting by Name")
 	//sort.Sort(SortByName(products))
-	products.Sort("Name")
+	// products.Sort("Name")
+	products.SortSlice("Name")
 	products.Print()
 
 	fmt.Println("Sorting by Cost")
 	//sort.Sort(SortByCost{Products: products})
-	products.Sort("Cost")
+	// products.Sort("Cost")
+	products.SortSlice("Cost")
 	products.Print()
 
 	fmt.Println("Sorting by Units")
 	// sort.Sort(SortByUnits{Products: products})
-	products.Sort("Units")
+	// products.Sort("Units")
+	products.SortSlice("Units")
 	products.Print()
 
 	fmt.Println("Sorting by Category")
 	// sort.Sort(SortByCategory{Products: products})
-	products.Sort("Category")
+	// products.Sort("Category")
+	products.SortSlice("Category")
 	products.Print()
 }
