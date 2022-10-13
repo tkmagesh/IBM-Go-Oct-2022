@@ -189,3 +189,8 @@ Concurrency?
     DO NOT make these assumptions:
         - NEVER assume the time taken for a goroutine to complete and synchronize the goroutines
         - NEVER assume the sequence in which the goroutines are executed
+
+    Race Conditions
+        to detect data race
+            go run --race <program.go>
+            go build --race <program.go>
