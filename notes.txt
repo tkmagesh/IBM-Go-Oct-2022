@@ -178,3 +178,14 @@ Maintainable?
     Easy to change
 
 Maintainability X Performance
+
+Concurrency?
+    Cooperative Multitasking
+    Preemptive Multitasking
+
+    Ability to have more than one execution path in our applications
+    Traditionally this is achieved using multiple OS threads
+
+    DO NOT make these assumptions:
+        - NEVER assume the time taken for a goroutine to complete and synchronize the goroutines
+        - NEVER assume the sequence in which the goroutines are executed
