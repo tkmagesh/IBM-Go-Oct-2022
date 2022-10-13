@@ -194,3 +194,29 @@ Concurrency?
         to detect data race
             go run --race <program.go>
             go build --race <program.go>
+
+    channel
+        - data type
+        - used for enabling concurrent safe communication between goroutines
+        - usage:
+            var ch chan int = make(chan int)
+            ch := make(chan int)
+
+            SEND operation
+                ch <- 100 
+
+            RECEIVE operation
+                <- ch 
+
+        - IMPORTANT:
+            a RECEIVE operation is ALWAYS a blocking operation
+                unblocked ONLY when the data received through the channel
+
+            a SEND operation can succeed ONLY if a RECEIVE operation is already initiated (conditions apply)
+                OR a SEND operation is blocked until a RECEIVE operation is initiated
+
+
+fn(){
+    ch <- 100
+    fmt.Println("....")
+}
