@@ -212,7 +212,7 @@ Concurrency?
             a RECEIVE operation is ALWAYS a blocking operation
                 unblocked ONLY when the data received through the channel
 
-            a SEND operation can succeed ONLY if a RECEIVE operation is already initiated (conditions apply)
+            a SEND operation can succeed ONLY if a RECEIVE operation is already initiated (ONLY in a non buffered channel)
                 OR a SEND operation is blocked until a RECEIVE operation is initiated
 
 
