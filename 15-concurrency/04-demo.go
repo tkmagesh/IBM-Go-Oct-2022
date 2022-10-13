@@ -11,8 +11,8 @@ import (
 var wg sync.WaitGroup
 
 func main() {
+	wg.Add(10) //set the wg counter
 	for i := 0; i < 10; i++ {
-		wg.Add(1) //set the wg counter
 		go f1()
 	}
 	f2()
